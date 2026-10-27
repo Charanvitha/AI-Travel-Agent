@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: atlasai
+      POSTGRES_USER: atlasai
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-atlasai-local}
+    volumes:
+      - atlasai-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U atlasai"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  app:
+    build: .
+    environment:
+      DATABASE_URL: postgresql://atlasai:${POSTGRES_PASSWORD:-atlasai-local}@db:5432/atlasai
+      SECRET_KEY: ${SECRET_KEY:-replace-before-deploy}
+      FRONTEND_URL: http://localhost:5000
+    ports:
+      - "5000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+volumes:
+  atlasai-db:
