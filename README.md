@@ -46,7 +46,7 @@ You can also run the container locally with `docker compose up --build`; the app
 - Family profile interests rank matching places, and travel pace controls the planned number of visits per day. Age ranges are stored but do not imply venue age suitability.
 - SQLite/PostgreSQL-ready SQLAlchemy models, decimal-safe estimates, trip version snapshots and checklist persistence.
 - Deterministic demo destination recommendations, budget-aware itinerary generation, schedule validation, budget rescue and replanning endpoints.
-- Unique named demo place lists for Kerala, Hyderabad, Warangal and Bengaluru; place entry prices remain unquoted until checked with venues.
+- Unique named demo place lists for Goa, Kerala, Hyderabad, Warangal and Bengaluru; place entry prices remain unquoted until checked with venues.
 - Transport comparison links for flights, trains, buses and driving/cabs using Google Flights, MakeMyTrip, IRCTC, redBus, Google Maps and Uber. These open provider fare searches; AtlasAI does not claim live prices.
 - Service interfaces for places, weather and language model providers. No live provider is enabled by default; demo records are labeled as estimates.
 - Docker Compose for the app and PostgreSQL.

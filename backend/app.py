@@ -140,6 +140,15 @@ def create_app(test_config=None):
             candidates = sorted(candidates, key=lambda place: place["category"].casefold() not in preferred_categories)
         pace = (profile.travel_pace or "balanced").casefold()
         places_per_day = {"relaxed": 1, "balanced": 2, "adventurous": 3}.get(pace, 2)
+        if not candidates:
+            itinerary = {"days": [], "estimatedTotal": "0", "budget": str(trip.total_budget), "currency": trip.currency,
+                         "isEstimate": True, "source": "No curated sample data for this destination",
+                         "withinBudget": False, "personalization": {"travelPace": pace, "placesPerDay": places_per_day,
+                         "interestsUsed": interests, "adultsCount": profile.adults_count, "childrenAgeRanges": profile.children_age_ranges or []},
+                         "warnings": ["No named demo places are available for this destination yet. No itinerary or daily cost estimate was generated."]}
+            trip.current_version += 1; trip.itinerary = itinerary
+            db.session.add(TripVersion(trip_id=trip.id, version_number=trip.current_version, reason=reason, itinerary_snapshot=itinerary)); db.session.commit()
+            return itinerary
         items = []
         for day in range(days):
             picked = candidates[day * places_per_day:day * places_per_day + places_per_day]
@@ -154,7 +163,6 @@ def create_app(test_config=None):
         activity_sum = sum((Decimal(item["estimatedCost"]) for day in items for item in day["items"] if item["estimatedCost"] is not None), Decimal("0"))
         total = activity_sum + Decimal("500") * days
         warnings = []
-        if not candidates: warnings.append("No named demo places are available for this destination yet. Add a supported destination or browse a local tourism directory.")
         if any(item["estimatedCost"] is None for day in items for item in day["items"]): warnings.append("Venue entry fees, meals, local transport and accommodation are not included. Check current prices with each provider.")
         if total > trip.total_budget: warnings.append("This partial estimate exceeds the entered budget. Use Budget rescue to see a lower-cost draft.")
         itinerary = {"days": items, "estimatedTotal": str(total), "budget": str(trip.total_budget), "currency": trip.currency, "isEstimate": True, "source": "Named demo places · entry fees are not verified", "withinBudget": total <= trip.total_budget, "personalization": {"travelPace": pace, "placesPerDay": places_per_day, "interestsUsed": interests, "adultsCount": profile.adults_count, "childrenAgeRanges": profile.children_age_ranges or []}, "warnings": warnings}

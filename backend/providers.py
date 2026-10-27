@@ -46,6 +46,24 @@ PLACE_CATALOG = {
         ("Jawaharlal Nehru Planetarium", "Bengaluru", "Museum", 90, "Astronomy shows and exhibits; showtimes should be checked."),
         ("National Gallery of Modern Art Bengaluru", "Bengaluru", "Gallery", 120, "Modern art gallery in a historic Bengaluru residence."),
     ],
+    "goa": [
+        ("Fort Aguada", "Sinquerim, North Goa", "Heritage", 120, "Coastal fort complex overlooking the Arabian Sea."),
+        ("Basilica of Bom Jesus", "Old Goa", "Heritage", 75, "Historic church in Old Goa; check visitor access and service times."),
+        ("Se Cathedral", "Old Goa", "Heritage", 75, "Historic cathedral in Old Goa; observe current visitor guidance."),
+        ("Fontainhas Latin Quarter", "Panaji", "Culture", 90, "Walkable heritage quarter in central Panaji."),
+        ("Reis Magos Fort", "Bardez, North Goa", "Heritage", 90, "Restored fort above the Mandovi estuary; check opening hours."),
+        ("Chapora Fort", "Vagator, North Goa", "Heritage", 90, "Hilltop fort ruins with an uphill approach."),
+        ("Dona Paula Jetty", "Panaji", "Coast", 60, "Coastal viewpoint near the meeting of the Zuari and Mandovi rivers."),
+        ("Miramar Beach", "Panaji", "Coast", 75, "City beach near Panaji; follow local water-safety notices."),
+        ("Anjuna Beach", "Bardez, North Goa", "Coast", 90, "North Goa beach; facilities and sea conditions vary."),
+        ("Calangute Beach", "Bardez, North Goa", "Coast", 90, "Popular North Goa beach; check local advisories and conditions."),
+        ("Colva Beach", "Salcete, South Goa", "Coast", 90, "South Goa beach with seasonal facilities."),
+        ("Palolem Beach", "Canacona, South Goa", "Coast", 120, "South Goa coastal area; boat services and sea conditions vary."),
+        ("Cabo de Rama Fort", "Canacona, South Goa", "Heritage", 90, "Fort ruins and coastal views in South Goa."),
+        ("Dudhsagar Falls", "Sanguem, Goa", "Nature", 240, "Waterfall access is seasonal and may require an authorized operator."),
+        ("Cotigao Wildlife Sanctuary", "Canacona, South Goa", "Nature", 180, "Protected forest area; access rules and facilities should be checked."),
+        ("Goa Science Centre", "Miramar, Panaji", "Museum", 120, "Interactive science exhibits; confirm current schedules and entry details."),
+    ],
 }
 
 

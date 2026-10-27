@@ -53,7 +53,19 @@ def test_place_catalog_uses_distinct_real_names_and_unpriced_estimates(client):
     names = [place["name"] for place in results]
     assert len(names) >= 10 and len(names) == len(set(names))
     assert all(place["cost"] is None for place in results)
+    goa = client.get("/api/places/search?destination=Goa").get_json()["results"]
+    goa_names = [place["name"] for place in goa]
+    assert len(goa_names) >= 14 and len(goa_names) == len(set(goa_names))
     assert client.get("/api/places/search?destination=Atlantis").get_json()["results"] == []
+
+def test_unknown_destination_does_not_create_an_empty_costed_schedule(client):
+    register(client)
+    response = client.post("/api/trips", json={"origin":"Hyderabad","destination":"Atlantis","startDate":"2027-01-10","endDate":"2027-01-11","budget":"12000","currency":"INR"})
+    trip = response.get_json()
+    plan = client.post(f"/api/trips/{trip['id']}/plan", json={}).get_json()
+    assert plan["days"] == []
+    assert plan["estimatedTotal"] == "0"
+    assert "No itinerary or daily cost estimate" in plan["warnings"][0]
 
 def test_family_interests_and_pace_shape_generated_plan(client):
     register(client)
