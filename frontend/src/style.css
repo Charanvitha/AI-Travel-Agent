@@ -9,3 +9,15 @@
 @media(max-width:430px){.places-grid{grid-template-columns:1fr}.place-foot{font-size:8px}}
 .overview-banner{align-items:center}.overview-banner>.primary{background:#e6f3ed;color:#315b57;white-space:nowrap}.overview-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}.overview-metrics article{background:#fff;border:1px solid #e8edef;border-radius:7px;padding:15px;display:flex;flex-direction:column;gap:6px}.overview-metrics article>span,.overview-date>span{font-size:8px;letter-spacing:1px;font-weight:700;color:#87a0a7}.overview-metrics article>b{font:700 20px Manrope;color:#315165}.overview-metrics article>small{font-size:9px;color:#87969e}.overview-days{background:#fff;border:1px solid #e8edef;border-radius:8px;padding:18px 20px}.overview-days-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:8px}.overview-days-head h3{font:700 14px Manrope;color:#345167;margin:6px 0 0}.overview-day{display:grid;grid-template-columns:130px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-top:1px solid #edf0f1}.overview-date b,.overview-date span,.overview-day-cost small{display:block}.overview-date b{font-size:10px;color:#506a79;margin-top:5px}.overview-stops{display:flex;flex-wrap:wrap;gap:7px}.overview-stops span{display:flex;align-items:center;gap:4px;background:#f2f7f6;color:#527f78;padding:6px 8px;border-radius:14px;font-size:9px}.overview-day-cost{font-size:10px;font-weight:700;color:#456678;text-align:right;white-space:nowrap}.overview-day-cost small{font-size:8px;color:#9aa6ab;font-weight:400;margin-top:3px}.overview-summary>.estimate-note{margin-top:7px}
 @media(max-width:700px){.overview-banner{display:flex;flex-direction:column;align-items:flex-start;gap:12px}.overview-metrics{grid-template-columns:1fr}.overview-day{grid-template-columns:95px 1fr}.overview-day-cost{grid-column:2;text-align:left}.overview-days{padding:14px}.overview-days-head .text-button{font-size:0}.overview-days-head .text-button svg{width:16px;height:16px}}
+
+/* Keep trip summaries comfortable at narrow widths and when warning copy is long. */
+.trip-page,.overview-summary,.day-card,.overview-days{min-width:0}
+.itinerary-banner>div{min-width:0}
+.itinerary-banner p,.warning,.estimate-note{overflow-wrap:anywhere;line-height:1.55}
+.warning{margin:12px 0;padding:12px 15px;border:1px solid #f4e2c9}
+.overview-metrics article{min-width:0;min-height:100px;padding:17px 18px;gap:8px}
+.overview-days{padding:20px 22px}
+.overview-day{min-height:67px;grid-template-columns:minmax(105px,145px) minmax(0,1fr) auto;gap:14px}
+.overview-stops span{max-width:100%;line-height:1.35}
+.overview-day-cost{align-self:center}
+@media(max-width:760px){.itinerary-banner{gap:16px}.itinerary-banner>div{width:100%}.overview-day{grid-template-columns:minmax(82px,105px) minmax(0,1fr);gap:10px}.overview-day-cost{grid-column:2;text-align:left}.overview-stops{gap:6px}.overview-days{padding:15px}.estimate-note{align-items:flex-start;flex-wrap:wrap}}
